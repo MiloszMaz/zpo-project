@@ -8,3 +8,5 @@ Dane sa wyswietlane w tabeli po rozpoczeciu programu, a przycisk "Pobierz" odswi
 
 Wsrod kursu walut mozna filtrowac po kodzie, po prawej stronie.
 
+Do zrobienia:
+- kalkulator walut z uzyciem <T>

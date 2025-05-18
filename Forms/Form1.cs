@@ -1,6 +1,9 @@
+using System.Globalization;
+using projekt.Calculators;
 using projekt.Dto;
 using projekt.Exceptions;
 using projekt.Services;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace projekt
 {
@@ -8,6 +11,8 @@ namespace projekt
     {
         private readonly NbpService _nbpService = new NbpService();
         private readonly FileService _fileService = new FileService();
+        private readonly CurrencyCalculator _currencyCalculator = new CurrencyCalculator();
+        private readonly OptionsService<string> _optionsService = new OptionsService<string>();
 
         public Form1()
         {
@@ -53,6 +58,20 @@ namespace projekt
             List<ExchangeRate> list = _fileService.getFromFile();
 
             this.displayRates(list);
+            this.addToListBox(list);
+        }
+
+        private void addToListBox(List<ExchangeRate> list)
+        {
+            var codes = list.Select(r => r.code).ToList();
+
+            _optionsService.addOptions(codes);
+
+            listBox1.Items.Clear();
+            listBox1.Items.AddRange(_optionsService.getOptions().ToArray());
+
+            listBox2.Items.Clear();
+            listBox2.Items.AddRange(_optionsService.getOptions().ToArray());
         }
 
         private void displayRates(List<ExchangeRate> list)
@@ -73,6 +92,37 @@ namespace projekt
                 .ToList();
 
             this.displayRates(filtered);
+        }
+
+        private void calculate()
+        {
+            string input = textBox2.Text.Trim();
+
+            if (decimal.TryParse(input, NumberStyles.Any, new CultureInfo("pl-PL"), out decimal amount))
+            {
+                string? fromCode = listBox1.SelectedItem?.ToString() ?? null;
+                string? toCode = listBox2.SelectedItem?.ToString() ?? null;
+
+                if (!string.IsNullOrEmpty(fromCode) && !string.IsNullOrEmpty(toCode))
+                {
+                    decimal calculatedAmount = this._currencyCalculator.convert(fromCode, toCode, amount);
+
+                    label4.Text = calculatedAmount.ToString("0.00") + " " + toCode;
+                }
+            } else
+            {
+                throw new Exception("Wrong amount");
+            }
+        }
+
+        public void selectRate(object sender, EventArgs e)
+        {
+            try
+            {
+                this.calculate();
+            } catch(Exception exception) {
+                MessageBox.Show("Coœ posz³o nie tak: " + exception.Message);
+            }
         }
     }
 }

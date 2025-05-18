@@ -34,6 +34,12 @@ namespace projekt
             dataGridViewRates = new DataGridView();
             textBox1 = new TextBox();
             label1 = new Label();
+            textBox2 = new TextBox();
+            listBox1 = new ListBox();
+            listBox2 = new ListBox();
+            label2 = new Label();
+            label3 = new Label();
+            label4 = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridViewRates).BeginInit();
             SuspendLayout();
             // 
@@ -61,8 +67,7 @@ namespace projekt
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(149, 23);
             textBox1.TabIndex = 2;
-            textBox1.TextChanged += this.textBox1_TextChanged;
-            textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            textBox1.TextChanged += textBox1_TextChanged;
             // 
             // label1
             // 
@@ -72,13 +77,72 @@ namespace projekt
             label1.Size = new Size(110, 15);
             label1.TabIndex = 3;
             label1.Text = "Wyszukaj po kodzie";
-            //label1.Click += this.label1_Click;
+            // 
+            // textBox2
+            // 
+            textBox2.Location = new Point(26, 102);
+            textBox2.Name = "textBox2";
+            textBox2.Size = new Size(100, 23);
+            textBox2.TabIndex = 4;
+            textBox2.TextChanged += selectRate;
+            // 
+            // listBox1
+            // 
+            listBox1.FormattingEnabled = true;
+            listBox1.ItemHeight = 15;
+            listBox1.Location = new Point(26, 140);
+            listBox1.Name = "listBox1";
+            listBox1.Size = new Size(120, 94);
+            listBox1.TabIndex = 5;
+            listBox1.SelectedIndexChanged += selectRate;
+            // 
+            // listBox2
+            // 
+            listBox2.FormattingEnabled = true;
+            listBox2.ItemHeight = 15;
+            listBox2.Location = new Point(26, 252);
+            listBox2.Name = "listBox2";
+            listBox2.Size = new Size(120, 94);
+            listBox2.TabIndex = 6;
+            listBox2.SelectedIndexChanged += selectRate;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(26, 372);
+            label2.Name = "label2";
+            label2.Size = new Size(43, 15);
+            label2.TabIndex = 7;
+            label2.Text = "Kwota:";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(26, 84);
+            label3.Name = "label3";
+            label3.Size = new Size(81, 15);
+            label3.TabIndex = 8;
+            label3.Text = "Przelicz kwotę";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(75, 372);
+            label4.Name = "label4";
+            label4.Size = new Size(0, 15);
+            label4.TabIndex = 9;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(label4);
+            Controls.Add(label3);
+            Controls.Add(label2);
+            Controls.Add(listBox2);
+            Controls.Add(listBox1);
+            Controls.Add(textBox2);
             Controls.Add(label1);
             Controls.Add(textBox1);
             Controls.Add(dataGridViewRates);
@@ -118,5 +182,11 @@ namespace projekt
         private DataGridView dataGridViewRates;
         private TextBox textBox1;
         private Label label1;
+        private TextBox textBox2;
+        private ListBox listBox1;
+        private ListBox listBox2;
+        private Label label2;
+        private Label label3;
+        private Label label4;
     }
 }
