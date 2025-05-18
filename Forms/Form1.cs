@@ -12,6 +12,8 @@ namespace projekt
         public Form1()
         {
             InitializeComponent();
+
+            this.displayRates();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -43,6 +45,14 @@ namespace projekt
             List<ExchangeRate> list = _nbpService.getExchangeRates();
 
             _fileService.save(list);
+        }
+
+        private void displayRates()
+        {
+            List<ExchangeRate> list = _fileService.getFromFile();
+
+            this.changeColumn();
+            dataGridViewRates.DataSource = list.OrderBy(r => r.currency).ToList();
         }
     }
 }

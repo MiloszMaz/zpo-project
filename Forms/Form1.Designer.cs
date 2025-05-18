@@ -1,4 +1,6 @@
-﻿namespace projekt
+﻿using System.Runtime.CompilerServices;
+
+namespace projekt
 {
     partial class Form1
     {
@@ -29,6 +31,8 @@
         private void InitializeComponent()
         {
             download_data = new Button();
+            dataGridViewRates = new DataGridView();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewRates).BeginInit();
             SuspendLayout();
             // 
             // download_data
@@ -41,19 +45,52 @@
             download_data.UseVisualStyleBackColor = true;
             download_data.Click += button1_Click;
             // 
+            // dataGridViewRates
+            // 
+            dataGridViewRates.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewRates.Location = new Point(243, 27);
+            dataGridViewRates.Name = "dataGridViewRates";
+            dataGridViewRates.Size = new Size(381, 411);
+            dataGridViewRates.TabIndex = 1;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(dataGridViewRates);
             Controls.Add(download_data);
             Name = "Form1";
             Text = "Form1";
+            ((System.ComponentModel.ISupportInitialize)dataGridViewRates).EndInit();
             ResumeLayout(false);
+        }
+
+        private void changeColumn()
+        {
+            dataGridViewRates.AutoGenerateColumns = false;
+            dataGridViewRates.Columns.Clear();
+
+            dataGridViewRates.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "Currency",
+                HeaderText = "Waluta"
+            });
+            dataGridViewRates.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "Code",
+                HeaderText = "Kod"
+            });
+            dataGridViewRates.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "Mid",
+                HeaderText = "Kurs (PLN)"
+            });
         }
 
         #endregion
 
         private Button download_data;
+        private DataGridView dataGridViewRates;
     }
 }

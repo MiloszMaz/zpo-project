@@ -14,12 +14,35 @@ namespace projekt.Services
             {
                 string jsonString = JsonSerializer.Serialize(list);
 
-                string outputPath = Path.Combine(this.getRootPath(), _configService.getOutputFilePath());
-
-                File.WriteAllText(outputPath, jsonString);
+                File.WriteAllText(this.getOutputFilePath(), jsonString);
             } catch(Exception exception) {
                 throw new FileException("Error on save data: " + exception.Message);
             }
+        }
+
+        public List<ExchangeRate> getFromFile()
+        {
+            try
+            {
+                string outputFilePath = this.getOutputFilePath();
+
+                if (!File.Exists(outputFilePath)) {
+                    return new List<ExchangeRate>();
+                }
+
+                var json = File.ReadAllText(outputFilePath);
+
+                return JsonSerializer.Deserialize<List<ExchangeRate>>(json) ?? new List<ExchangeRate>();
+            }
+            catch (Exception exception)
+            {
+                throw new Exception("Error on get list data: " + exception.Message);
+            }
+        }
+
+        private string getOutputFilePath()
+        {
+            return Path.Combine(this.getRootPath(), _configService.getOutputFilePath());
         }
 
         private string getRootPath()
