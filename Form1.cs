@@ -1,9 +1,13 @@
 using projekt.Dto;
+using projekt.Services;
 
 namespace projekt
 {
     public partial class Form1 : Form
     {
+        private readonly NbpService _nbpService = new NbpService();
+        private readonly FileService _fileService = new FileService();
+
         public Form1()
         {
             InitializeComponent();
@@ -11,13 +15,14 @@ namespace projekt
 
         private void button1_Click(object sender, EventArgs e)
         {
-            NbpService nbpService = new NbpService();
-            List<ExchangeRate> list = nbpService.getExchangeRates();
+            List<ExchangeRate> list = _nbpService.getExchangeRates();
 
-            foreach (var item in list)
-            {
-                MessageBox.Show(item.currency);
-            }
+            _fileService.save(list);
+
+            //foreach (var item in list)
+            //{
+            //    MessageBox.Show(item.currency);
+            //}
         }
     }
 }
