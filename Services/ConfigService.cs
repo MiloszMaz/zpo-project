@@ -13,7 +13,7 @@ namespace projekt.Services
             settingsDto = JsonSerializer.Deserialize<SettingsDto>(json, new JsonSerializerOptions
             {
                 PropertyNameCaseInsensitive = true
-            }) ?? throw new Exception("Nie udało się wczytać konfiguracji.");
+            }) ?? throw new Exception("Error on load settings");
         }
 
         public string getOutputFilePath()
