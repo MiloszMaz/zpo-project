@@ -9,7 +9,6 @@ D:\Studia\ZPO\zpo-project\obj\Debug\net8.0-windows\projekt.GeneratedMSBuildEdito
 D:\Studia\ZPO\zpo-project\obj\Debug\net8.0-windows\projekt.AssemblyInfoInputs.cache
 D:\Studia\ZPO\zpo-project\obj\Debug\net8.0-windows\projekt.AssemblyInfo.cs
 D:\Studia\ZPO\zpo-project\obj\Debug\net8.0-windows\projekt.csproj.CoreCompileInputs.cache
-D:\Studia\ZPO\zpo-project\obj\Debug\net8.0-windows\projekt.sourcelink.json
 D:\Studia\ZPO\zpo-project\obj\Debug\net8.0-windows\projekt.dll
 D:\Studia\ZPO\zpo-project\obj\Debug\net8.0-windows\refint\projekt.dll
 D:\Studia\ZPO\zpo-project\obj\Debug\net8.0-windows\projekt.pdb

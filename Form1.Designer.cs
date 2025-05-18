@@ -28,12 +28,32 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "Form1";
+            download_data = new Button();
+            SuspendLayout();
+            // 
+            // download_data
+            // 
+            download_data.Location = new Point(26, 27);
+            download_data.Name = "download_data";
+            download_data.Size = new Size(108, 23);
+            download_data.TabIndex = 0;
+            download_data.Text = "Pobierz dane";
+            download_data.UseVisualStyleBackColor = true;
+            download_data.Click += button1_Click;
+            // 
+            // Form1
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(800, 450);
+            Controls.Add(download_data);
+            Name = "Form1";
+            Text = "Form1";
+            ResumeLayout(false);
         }
 
         #endregion
+
+        private Button download_data;
     }
 }
