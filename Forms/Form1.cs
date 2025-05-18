@@ -36,7 +36,8 @@ namespace projekt
             }
             finally
             {
-                MessageBox.Show("Data saved.", "Success");
+                this.displayRates();
+                MessageBox.Show("Dane zosta³y zapisane i odœwie¿ono tabelê", "Success");
             }
         }
 
