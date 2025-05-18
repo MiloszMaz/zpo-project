@@ -32,6 +32,8 @@ namespace projekt
         {
             download_data = new Button();
             dataGridViewRates = new DataGridView();
+            textBox1 = new TextBox();
+            label1 = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridViewRates).BeginInit();
             SuspendLayout();
             // 
@@ -53,17 +55,39 @@ namespace projekt
             dataGridViewRates.Size = new Size(381, 411);
             dataGridViewRates.TabIndex = 1;
             // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(630, 45);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(149, 23);
+            textBox1.TabIndex = 2;
+            textBox1.TextChanged += this.textBox1_TextChanged;
+            textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(630, 27);
+            label1.Name = "label1";
+            label1.Size = new Size(110, 15);
+            label1.TabIndex = 3;
+            label1.Text = "Wyszukaj po kodzie";
+            //label1.Click += this.label1_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(label1);
+            Controls.Add(textBox1);
             Controls.Add(dataGridViewRates);
             Controls.Add(download_data);
             Name = "Form1";
             Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)dataGridViewRates).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         private void changeColumn()
@@ -92,5 +116,7 @@ namespace projekt
 
         private Button download_data;
         private DataGridView dataGridViewRates;
+        private TextBox textBox1;
+        private Label label1;
     }
 }

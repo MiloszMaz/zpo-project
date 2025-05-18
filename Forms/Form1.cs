@@ -13,7 +13,7 @@ namespace projekt
         {
             InitializeComponent();
 
-            this.displayRates();
+            this.displayRatesFromFile();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -36,7 +36,7 @@ namespace projekt
             }
             finally
             {
-                this.displayRates();
+                this.displayRatesFromFile();
                 MessageBox.Show("Dane zosta³y zapisane i odœwie¿ono tabelê", "Success");
             }
         }
@@ -48,12 +48,31 @@ namespace projekt
             _fileService.save(list);
         }
 
-        private void displayRates()
+        private void displayRatesFromFile()
         {
             List<ExchangeRate> list = _fileService.getFromFile();
 
+            this.displayRates(list);
+        }
+
+        private void displayRates(List<ExchangeRate> list)
+        {
             this.changeColumn();
+            dataGridViewRates.DataSource = null;
             dataGridViewRates.DataSource = list.OrderBy(r => r.currency).ToList();
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            List<ExchangeRate> list = _fileService.getFromFile();
+            string code = textBox1.Text.Trim().ToUpper();
+
+            var filtered = list
+                .Where(rate => rate.code.Contains(code))
+                .OrderBy(rate => rate.code)
+                .ToList();
+
+            this.displayRates(filtered);
         }
     }
 }
